@@ -3,7 +3,7 @@
 	"displayName": "Apply Patch",
 	"description": "Apply patch files from the explorer",
 	"license": "GPL-3.0-or-later",
-	"version": "0.0.1",
+	"version": "1.0.0",
 	"publisher": "sadan",
 	"repository": {
 		"url": "git+https://github.com/sadan4/ApplyPatch.git",
