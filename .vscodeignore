@@ -1,0 +1,13 @@
+*.zip
+*.vsix
+src
+node_modules
+.github
+.vscode
+dist/**/*.map
+dist/meta.json
+pnpm-lock.yaml
+pnpm-workspace.yaml
+tsconfig.json
+.gitignore
+.vscodeignore

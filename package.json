@@ -1,0 +1,72 @@
+{
+	"name": "apply-patch",
+	"displayName": "Apply Patch",
+	"description": "Apply patch files from the explorer",
+	"license": "GPL-3.0-or-later",
+	"version": "0.0.1",
+	"publisher": "sadan",
+	"repository": {
+		"url": "git+https://github.com/sadan4/ApplyPatch.git",
+		"type": "git"
+	},
+	"author": {
+		"name": "sadan",
+		"url": "https://sadan.zip"
+	},
+	"engines": {
+		"vscode": "^1.90.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"main": "./dist/ext.js",
+	"scripts": {
+		"vscode:prepublish": "pnpm build",
+		"package": "vsce package",
+		"typecheck": "tsc --noEmit -p ./.",
+		"publish:vsce": "pnpm build && vsce publish --no-dependencies",
+		"publish:ovsx": "pnpm build && ovsx publish --no-dependencies",
+		"build": "esbuild --bundle --metafile=dist/meta.json --minify --sourcemap=external --external:vscode --platform=node --outfile=dist/ext.js src/ext.ts",
+		"dev": "esbuild --bundle --sourcemap=external --external:vscode --platform=node --outfile=dist/ext.js src/ext.ts",
+		"watch": "esbuild --watch --bundle --sourcemap=external --external:vscode --platform=node --outfile=dist/ext.js src/ext.ts"
+	},
+	"packageManager": "pnpm@10.15.1",
+	"devDependencies": {
+		"@types/node": "^24.3.1",
+		"@types/vscode": "~1.90.0",
+		"esbuild": "^0.25.10",
+		"ovsx": "^0.10.5",
+		"typescript": "^5.9.2",
+		"vsce": "^2.15.0"
+	},
+	"dependencies": {
+	},
+	"contributes": {
+		"commands": [
+			{
+				"command": "apply-patch.explorer",
+				"title": "Apply Patch"
+			}
+		],
+		"menus": {
+			"explorer/context": [
+				{
+					"command": "apply-patch.explorer",
+					"title": "Apply Patch",
+					"group": "3_compare",
+					"when": "editorLangId == 'diff' || resourceExtname == '.patch'"
+				}
+			],
+			"commandPalette": [
+				{
+					"command": "apply-patch.explorer",
+					"when": "isLinux && isWindows"
+				}
+			]
+		}
+	},
+	"_vsce": "see https://github.com/microsoft/vscode-vsce/blob/main/src/main.ts for types",
+	"vsce": {
+		"dependencies": false
+	}
+}
